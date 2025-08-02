@@ -1,43 +1,39 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<body>
+  <div class="form_main">
+    <h1>ユーザー設定</h1>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <div class="form-area">
+    <%= form_with model: @user do |f| %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス", class: "required" %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, "新しいパスワード", class: "required" %>
+        <%= f.password_field :password, id: "new_pass", class: "form-control", autocomplete: "new-password", placeholder: "新しいパスワード" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password_confirmation, "パスワード確認", class: "required" %>
+        <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-control", autocomplete: "new-password", placeholder: "もう一度入力" %>
+      </div>
+
+      <div class="form-check mb-4">
+        <input type="checkbox" class="form-check-input" id="show_passwords" onchange="
+          document.getElementById('new_pass').type = this.checked ? 'text' : 'password';
+          document.getElementById('password_confirmation').type = this.checked ? 'text' : 'password';
+        ">
+        <label class="form-check-label" for="show_passwords">パスワードを表示</label>
+      </div>
+
+      <div class="d-grid gap-2">
+        <%= f.submit "更新", class: "btn btn-success" %>
+        <%= link_to "キャンセル", account_path, class:"btn btn-outline-secondary" %>
+      </div>
+
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</body>
