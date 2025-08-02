@@ -6,6 +6,35 @@
       <div class="my_account_page-font"><%= @user.name %></div>
     </div>
   </li>
-
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">好きな産地</div>
+      <% if @user.productionarea.present? %>
+        <div class="my_account_page-font"><%= @user.productionarea %></div>
+      <% else %>
+        <div class="my_account_page-font unset-style">未設定</div>
+      <% end %>
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">好きなコーヒー</div>
+      <% if @user.favorite.present? %>
+        <div class="my_account_page-font"><%= @user.favorite %></div>
+      <% else %>
+        <div class="my_account_page-font unset-style">未設定</div>
+      <% end %>
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">自己紹介</div>
+      <% if @user.introduce.present? %>
+        <div class="my_account_page-font"><%= @user.introduce %></div>
+      <% else %>
+        <div class="my_account_page-font unset-style">未設定</div>
+      <% end %>
+    </div>
+  </li>
 </ul>
 </body>
