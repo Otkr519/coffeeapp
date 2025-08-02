@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "account_index.css", media: "all" %>
-<body>
+
 <ul class="list-group list-group-numbered">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -7,13 +7,15 @@
         <div class="my_account_page-font"><%= @user.email %></div>
     </div>
   </li>
+
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">パスワード</div>
         <div class="my_account_page-font">******</div>
     </div>
   </li>
+
     <%= link_to "ユーザ設定変更 →", edit_user_registration_path , class: "account_mypage_links" %>
     <%= link_to "マイページ →", user_path(current_user), class: "account_mypage_links" %>
-  </ul>
-</body>
+
+</ul>

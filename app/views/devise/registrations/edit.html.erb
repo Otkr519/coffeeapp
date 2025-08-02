@@ -1,40 +1,37 @@
 <%= stylesheet_link_tag "account_edit.css", media: "all" %>
-<body>
-  <div class="form_main">
-    <h1>ユーザー設定</h1>
-  </div>
 
-  <div class="form-area">
-    <%= form_with model: @user do |f| %>
+<div class="form_main">
+  <h1>ユーザー設定</h1>
+</div>
 
-      <div class="mb-3">
-        <%= f.label :email, "メールアドレス", class: "required" %>
-        <%= f.email_field :email, class: "form-control" %>
-      </div>
+<div class="form-area">
+  <%= form_with model: @user do |f| %>
 
-      <div class="mb-3">
-        <%= f.label :password, "新しいパスワード", class: "required" %>
-        <%= f.password_field :password, id: "new_pass", class: "form-control", autocomplete: "new-password", placeholder: "新しいパスワード" %>
-      </div>
+    <div class="mb-3">
+      <%= f.label :email, "メールアドレス", class: "required" %>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
 
-      <div class="mb-3">
-        <%= f.label :password_confirmation, "パスワード確認", class: "required" %>
-        <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-control", autocomplete: "new-password", placeholder: "もう一度入力" %>
-      </div>
+    <div class="mb-3">
+      <%= f.label :password, "新しいパスワード", class: "required" %>
+      <%= f.password_field :password, id: "new_pass", class: "form-control", autocomplete: "new-password", placeholder: "新しいパスワード" %>
+    </div>
 
-      <div class="form-check mb-4">
-        <input type="checkbox" class="form-check-input" id="show_passwords" onchange="
-          document.getElementById('new_pass').type = this.checked ? 'text' : 'password';
-          document.getElementById('password_confirmation').type = this.checked ? 'text' : 'password';
-        ">
+    <div class="mb-3">
+      <%= f.label :password_confirmation, "パスワード確認", class: "required" %>
+      <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-control", autocomplete: "new-password", placeholder: "もう一度入力" %>
+    </div>
+
+    <div class="form-check mb-4">
+      <input type="checkbox" class="form-check-input" id="show_passwords" onchange="
+        document.getElementById('new_pass').type = this.checked ? 'text' : 'password';
+        document.getElementById('password_confirmation').type = this.checked ? 'text' : 'password';">
         <label class="form-check-label" for="show_passwords">パスワードを表示</label>
-      </div>
+    </div>
 
-      <div class="d-grid gap-2">
-        <%= f.submit "更新", class: "btn btn-success" %>
-        <%= link_to "キャンセル", account_path, class:"btn btn-outline-secondary" %>
-      </div>
-
-    <% end %>
-  </div>
-</body>
+    <div class="d-grid gap-2">
+      <%= f.submit "更新", class: "btn btn-success" %>
+      <%= link_to "キャンセル", account_path, class:"btn btn-outline-secondary" %>
+    </div>
+  <% end %>
+</div>

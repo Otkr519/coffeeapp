@@ -1,37 +1,36 @@
 <%= stylesheet_link_tag "user_edit.css", media: "all" %>
-<body>
-  <div class="form_main">
-    <h1>プロフィール編集</h1>
-  </div>
 
-  <div class="form-area">
-    <%= form_with model: @user do |f| %>
+<div class="form_main">
+  <h1>プロフィール編集</h1>
+</div>
 
-      <div class="form-group">
-        <%= f.label :name, "名前", class: "required" %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
+<div class="form-area">
+  <%= form_with model: @user do |f| %>
 
-      <div class="form-group">
-        <%= f.label :productionarea, "好きな産地" %>
-        <%= f.text_field :productionarea, class: "form-control", placeholder: "例: エチオピア" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :name, "名前", class: "required" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :favorite, "好きなコーヒー" %>
-        <%= f.text_area :favorite, class: "form-control favorite_input_text", placeholder: "例: フルーティー香りにシトラス系の酸味が好み。" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :productionarea, "好きな産地" %>
+      <%= f.text_field :productionarea, class: "form-control", placeholder: "例: エチオピア" %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :introduce, "自己紹介" %>
-        <%= f.text_area :introduce, class: "form-control user_input_text", placeholder: "自己紹介を書いてみよう！" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :favorite, "好きなコーヒー" %>
+      <%= f.text_area :favorite, class: "form-control favorite_input_text", placeholder: "例: フルーティー香りにシトラス系の酸味が好み。" %>
+    </div>
 
-      <div class="d-grid gap-2">
-        <%= f.submit "更新", class: "btn btn-success" %>
-        <%= link_to "キャンセル", user_path(current_user), class: "btn btn-outline-secondary" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :introduce, "自己紹介" %>
+      <%= f.text_area :introduce, class: "form-control user_input_text", placeholder: "自己紹介を書いてみよう！" %>
+    </div>
 
-    <% end %>
-  </div>
-</body>
+    <div class="d-grid gap-2">
+      <%= f.submit "更新", class: "btn btn-success" %>
+      <%= link_to "キャンセル", user_path(current_user), class: "btn btn-outline-secondary" %>
+    </div>
+
+  <% end %>
+</div>
