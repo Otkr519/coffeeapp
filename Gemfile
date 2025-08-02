@@ -74,3 +74,4 @@ end
 gem 'concurrent-ruby', '1.3.4'
 gem 'devise'
 gem 'active_hash'
+gem 'rails-i18n'
