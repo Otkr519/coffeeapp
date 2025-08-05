@@ -7,18 +7,18 @@
 <div class="form-area">
   <%= form_with model: @user do |f| %>
 
-    <div class="mb-3">
-      <h3><%= f.label :email, "メールアドレス", class: "required" %></h3>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス", class: "required" %>
       <%= f.email_field :email, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
-      <h3><%= f.label :password, "新しいパスワード", class: "required" %></h3>
+    <div class="form-group">
+      <%= f.label :password, "新しいパスワード", class: "required" %>
       <%= f.password_field :password, id: "new_pass", class: "form-control", autocomplete: "new-password", placeholder: "新しいパスワード" %>
     </div>
 
-    <div class="mb-3">
-      <h3><%= f.label :password_confirmation, "パスワード確認", class: "required" %></h3>
+    <div class="form-group">
+      <%= f.label :password_confirmation, "パスワード確認", class: "required" %>
       <%= f.password_field :password_confirmation, id: "password_confirmation", class: "form-control", autocomplete: "new-password", placeholder: "もう一度入力" %>
     </div>
 
