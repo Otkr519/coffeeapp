@@ -1,4 +1,4 @@
-.form_main{
+.form_main {
   height: 210px;
   background-image: url(backimages.jpg);
   background-repeat: no-repeat;
@@ -12,13 +12,13 @@
   text-shadow: 1px 1px 10px #4b2c14;
 }
 
-.form_main h1{
+.form_main h1 {
   font-family: "Yuji Mai", serif;
   font-size: 30px;
   font-weight: bold;
 }
 
-.form-area{
+.form-area {
   margin-top: 25px;
   padding: 30px;
   margin-left: 30px;
@@ -26,22 +26,29 @@
   border: 1px solid #aaaaaa;
 }
 
-.form-control{
-  margin-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+.form-group {
+  margin-bottom: 25px;
 }
 
-.form-area h3{
-  padding: 15px 0;
+.form-group label {
+  display: block;
   font-size: 15px;
   font-weight: bold;
-  line-height: 24px;
+  margin-bottom: 15px;
 }
 
-.form-area h3 .required::after{
+.form-group .required::after {
   content: '※必須';
   font-size: 11px;
   color: #eb4f32;
   margin-left: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
