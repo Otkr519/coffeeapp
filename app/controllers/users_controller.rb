@@ -23,6 +23,16 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+    def guest_user
+      user = User.find_or_create_by(email: 'guest@example.com') do |user|
+        user.password = SecureRandom.urlsafe_base64
+        user.password_confirmation = user.password
+        user.name = "ゲストユーザー"
+      end
+      sign_in user
+    end
+
+
     private
   def user_params
     params.require(:user).permit(:name, :email, :introduce, :image, :favorite, :productionarea, :password, :password_confirmation)
