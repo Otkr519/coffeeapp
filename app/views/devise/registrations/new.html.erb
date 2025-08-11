@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "login_sign.css", media: "all" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="border rounded p-4 shadow">
+    <h1 class="h3 mb-3 font-weight-normal text-center">新規アカウントを作成</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.label :name, class: "visually-hidden" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "アカウント名", autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "visually-hidden" %>
+        <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス", autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, class: "visually-hidden" %>
+        <%= f.password_field :password, id: "pass", class: "form-control", placeholder: "パスワード", autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-check mt-2">
+        <input type="checkbox" class= "form-check-input" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+        <label class="form-check-label" for="showPassword">パスワードを表示</label>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto mb-3">
+        <%= f.submit "新規アカウントを作成", class: "btn btn-success" %>
+      </div>
+    <% end %>
+
+    <div class="text-center">
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

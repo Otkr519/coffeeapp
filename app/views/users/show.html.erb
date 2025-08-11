@@ -1,0 +1,57 @@
+<%= stylesheet_link_tag "user_show.css", media: "all" %>
+<%= stylesheet_link_tag "user_account_show_shared.css", media: "all" %>
+
+<ul class="list-group list-group-numbered">
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">名前</div>
+      <div class="my_account_page-font">
+        <%= @user.name %>
+      </div>
+    </div>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">好きな産地</div>
+      <div class="my_account_page-font">
+        <% if @user.productionarea.present? %>
+          <%= @user.productionarea %>
+        <% else %>
+          <div class="unset-style">未設定</div>
+        <% end %>
+      </div>
+    </div>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">好きなコーヒー</div>
+      <div class="my_account_page-font">
+        <% if @user.favorite.present? %>
+          <%= @user.favorite %>
+        <% else %>
+          <div class="unset-style">未設定</div>
+        <% end %>
+      </div>
+    </div>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">自己紹介</div>
+      <div class="my_account_page-font">
+        <% if @user.introduce.present? %>
+          <%= @user.introduce %>
+        <% else %>
+          <div class="unset-style">未設定</div>
+        <% end %>
+      </div>
+    </div>
+  </li>
+
+    <%= link_to "プロフィール編集 →", [:edit, @user], class: "account_mypage_links" %>
+    <%= link_to "ユーザーページ →", account_path, class: "account_mypage_links" %>
+
+</ul>

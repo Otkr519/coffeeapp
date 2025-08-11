@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_stores, through: :likes, source: :store
+
+  validates :name, presence: true
 end
