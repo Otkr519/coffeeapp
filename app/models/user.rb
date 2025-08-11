@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :liked_stores, through: :likes, source: :store
 
   validates :name, presence: true
+
+  mount_uploader :image, ImageUploader
 end

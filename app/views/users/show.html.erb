@@ -1,6 +1,12 @@
 <%= stylesheet_link_tag "user_show.css", media: "all" %>
 <%= stylesheet_link_tag "user_account_show_shared.css", media: "all" %>
 
+<% if @user.image? %>
+  <%= image_tag @user.image.url , class: 'rounded mx-auto d-block'%>
+<% else %>
+  <%= image_tag "/assets/default.jpg", class: 'rounded mx-auto d-block' %>
+<% end %>
+
 <ul class="list-group list-group-numbered">
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
