@@ -20,7 +20,7 @@ class StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:name, :address, :countries, :roast_level, :image, :introduction, :prefecture_id, :remove_image)
+    params.require(:store).permit(:name, :address, :countries, :roast_level, :image, :prefecture_id, :remove_image)
   end
 
 end

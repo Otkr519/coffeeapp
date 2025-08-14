@@ -44,11 +44,6 @@
       <%= f.select :roast_level,["1 浅煎り", "2 中浅煎り", "3 中煎り", "4 中深煎り", "5 深煎り"] , { prompt: "焙煎度を選択してください。" }, class: 'form-control' %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :お店の紹介 , class:"required" %>
-      <%= f.text_area :introduction, class:'form-control', placeholder:"お店の紹介を入力してください。"   %>
-    </div>
-
     <div class="d-grid gap-2">
       <%= f.submit "登録" , class:"btn btn-success" %>
       <%= link_to "戻る", :back, class:"btn btn-outline-secondary" %>
