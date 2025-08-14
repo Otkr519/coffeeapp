@@ -1,0 +1,26 @@
+<div class= 'store_show_head_string'>
+    店舗情報
+</div>
+
+<div class= 'store_show_container'>
+  <% if @store.image? %>
+    <%= image_tag @store.image.url ,  :size => '400x400', class: 'store_images' %>
+  <% else %>
+    <%= image_tag "/assets/default.jpg", :size => '400x400', class: 'store_images' %>
+  <% end %>
+
+  <ul class="list-group list-group-flush">
+    <p class= "store_show_list_font">店舗名</p>
+    <li class="list-group-item"><%= @store.name%></li>
+    <p class= "store_show_list_font">住所</p>
+    <li class="list-group-item"><%= @store.address%></li>
+    <p class= "store_show_list_font">生産国</p>
+    <li class="list-group-item"><%= @store.countries%></li>
+    <p class= "store_show_list_font">焙煎度</p>
+    <li class= "list-group-item">
+      <% @store.roast_level.times do %>
+        <span class="coffeebeans_icon"></span>
+      <% end %>
+    </li>
+  </ul>
+</div>
