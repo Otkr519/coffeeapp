@@ -17,8 +17,17 @@ class StoresController < ApplicationController
     end
   end
 
-    def edit
+  def edit
     @store = Store.find(params[:id])
+  end
+
+  def update
+    @store = Store.find(params[:id])
+    if @store.update(store_params)
+      redirect_to @store
+    else
+      render 'edit'
+    end
   end
 
   private
