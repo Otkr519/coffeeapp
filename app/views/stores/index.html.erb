@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "store_index.css", media: "all" %>
+
+<div class='store_head_string'>
+  店舗一覧
+</div>
+
+  <% if user_signed_in? %>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <%= link_to "新規店舗登録", new_store_path, class: "btn btn-outline-success" %>
+    </div>
+  <% else %>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <%= link_to "ユーザー登録して新規店舗登録する",new_user_registration_path , class: "btn btn-outline-success" %>
+      <%= link_to "ログインはこちら",new_user_session_path , class: "btn btn-outline-success" %>
+    </div>
+  <% end %>
+
+  <div class='store_list'>
+
+    <% @stores.each do |store| %>
+      <%= link_to store_path(store), class: 'store_item' do %>
+        <% if store.image? %>
+          <%= image_tag store.image.url, size: '100x100', class: 'rounded' %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", size: '100x100', class: 'rounded' %>
+        <% end %>
+
+        <div class='store_info'>
+          <h3><%= store.name %></h3>
+          <p>住所: <%= store.address %></p>
+          <p>生産国: <%= store.countries %></p>
+          <p>
+            焙煎度:
+            <% store.roast_level.times do %>
+              <span class="coffeebeans_icon"></span>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+

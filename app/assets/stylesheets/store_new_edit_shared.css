@@ -1,0 +1,70 @@
+.form_main {
+  height: 210px;
+  background-image: url(store_backimage.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-shadow: 1px 1px 10px #4b2c14;
+}
+
+.form_main h1 {
+  font-family: "Yuji Mai", serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.form-area {
+  margin-top: 25px;
+  padding: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 1px solid #aaaaaa;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form-group .required::after {
+  content: '※必須';
+  font-size: 11px;
+  color: #eb4f32;
+  margin-left: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.countries_note {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .countries_note {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countries_note {
+    font-size: 10px;
+  }
+}
