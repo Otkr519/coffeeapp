@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "store_show.css", media: "all" %>
+<%= stylesheet_link_tag "store_show", media: "all" %>
 <div class= 'store_show_head_string'>
     店舗情報
 </div>
@@ -27,5 +27,6 @@
 </div>
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= link_to "店舗情報編集 →", [:edit, @store], class: "btn btn-light" %>
     <%= link_to '店舗を削除', store_path(@store), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
   </div>
