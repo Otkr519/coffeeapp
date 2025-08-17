@@ -1,0 +1,57 @@
+.top{
+  width: 100%;
+  background-image: url(backimages.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.top_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 250px;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh;
+}
+
+.h1_title , .h3_title{
+  color: #ffffff;
+  text-shadow: 10px 10px 10px #4b2c14;
+  font-family: "Yuji Mai", serif;
+}
+
+.h1_title {
+  font-weight: bold;
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+.h3_title {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+
+@media (max-width: 992px) {
+
+  .top {
+    padding-top: 100px;
+    height: auto;
+  }
+
+  .top_title {
+    padding-bottom: 100px;
+  }
+
+  .h1_title {
+    font-size: 32px;
+  }
+
+  .h3_title {
+    font-size: 18px;
+  }
+}
