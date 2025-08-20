@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: "nav-link #{' active'  if current_page?(root_path)}" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Store', stores_path, class: "nav-link #{' active'  if current_page?(stores_path) }" %>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <% if current_user.image? %>
+                <%= image_tag current_user.image.url, size: "40x40", class: "rounded-circle me-2" %>
+              <% else %>
+                <%= image_tag "/assets/default.jpg", size: "40x40", class: "rounded-circle me-2" %>
+              <% end %>
+              <span><%= current_user.name %></span>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><%= link_to 'マイページ', user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to 'アカウント設定', account_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item d-flex gap-2">
+            <%= link_to 'ログイン', new_user_session_path, class: "btn btn-light" %>
+            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-secondary" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
