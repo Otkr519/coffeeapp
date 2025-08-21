@@ -1,0 +1,58 @@
+<div class='store_search_head_string'>
+  店舗検索
+</div>
+
+<div class='store_search_container'>
+  <%= search_form_for @q, url: search_stores_path, method: :get do |f| %>
+    <div class='form-group'>
+      <%= f.label :name_cont, "店舗名" %>
+      <%= f.text_field :name_cont, class: 'form-control' %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :prefecture_id_eq, "地域" %>
+      <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, { include_blank: '未選択' }, { class: 'form-control' } %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :countries_cont, "生産国" %>
+      <%= f.text_field :countries_cont, class: 'form-control' %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :roast_level_eq, "焙煎度" %>
+      <%= f.select :roast_level_eq, [["浅煎り", 1], ["中浅煎り", 2], ["中煎り", 3], ["中深煎り", 4], ["深煎り", 5]], { include_blank: '未選択' }, class: 'form-control' %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.submit '検索', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
+
+
+<p class='search_result'>検索結果 <span class='search_result_count'><%= @stores.count %></span>件</p>
+
+<% if @stores.any? %>
+  <div class='store_list'>
+    <% @stores.each do |store| %>
+      <%= link_to store_path(store), class: 'store_link' do %>
+        <div class='store_item'>
+          <% if store.image? %>
+            <%= image_tag store.image.url, size: '100x100', class: 'rounded' %>
+          <% else %>
+            <%= image_tag "/assets/default.jpg", size: '100x100', class: 'rounded' %>
+          <% end %>
+          <div class='store_info'>
+            <h3><%= store.name %></h3>
+            <p>住所:<%= store.prefecture.name %> <%= store.address %></p>
+            <p>生産国: <%= store.countries %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+<% else %>
+  <p class="no-store-message">該当する店舗がありません。</p>
+<% end %>
