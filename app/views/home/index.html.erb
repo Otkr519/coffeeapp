@@ -4,6 +4,11 @@
     <div class= top_title_container>
       <h3 class= h3_title>お気に入りの珈琲が見つかる検索サイト</h3>
       <h1 class= h1_title>こそこそ珈琲研究室</h1>
+      <%= search_form_for @q, url: search_stores_path, method: :get, class: 'search_form' do |f| %>
+      <%= f.text_field :name_cont, class: 'search_box', placeholder: '店舗名で検索' %>
+      <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, { include_blank: 'エリアから探す' }, { class: 'search_box' } %>
+      <%= f.submit '検索', class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>
