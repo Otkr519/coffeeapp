@@ -4,6 +4,66 @@
     <div class= top_title_container>
       <h3 class= h3_title>お気に入りの珈琲が見つかる検索サイト</h3>
       <h1 class= h1_title>こそこそ珈琲研究室</h1>
+      <%= search_form_for @q, url: search_stores_path, method: :get, class: 'search_form' do |f| %>
+      <%= f.text_field :name_cont, class: 'search_box', placeholder: '店舗名で検索' %>
+      <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, { include_blank: 'エリアから探す' }, { class: 'search_box' } %>
+      <%= f.submit '検索', class: "btn btn-success" %>
+      <% end %>
     </div>
+  </div>
+</div>
+
+<div class="search_container">
+  <div class="country_search_text_container">
+    <div class="country_search_view_text">
+      <h2>Popular producing countries</h2>
+      <h3>人気な生産国</h3>
+    </div>
+  </div>
+
+  <section class="search_image_container">
+    <%= link_to search_stores_path(q: { countries_cont: "エチオピア" }) do %>
+      <div class="card">
+        <img src="/assets/Ethiopia.jpg" class="card-img-top" alt="エチオピア">
+        <div class="card-body">
+          <h5 class="card-title">エチオピア</h5>
+          <p class="card-text">華やかな香りと果実のような酸味</p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to search_stores_path(q: { countries_cont: "ブラジル" }) do %>
+      <div class="card">
+        <img src="/assets/Brazil.jpg" class="card-img-top" alt="ブラジル">
+        <div class="card-body">
+          <h5 class="card-title">ブラジル</h5>
+          <p class="card-text">力強い苦味とほんのり甘い香り</p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to search_stores_path(q: { countries_cont: "コロンビア" }) do %>
+      <div class="card">
+        <img src="/assets/Columbia.jpg" class="card-img-top" alt="コロンビア">
+        <div class="card-body">
+          <h5 class="card-title">コロンビア</h5>
+          <p class="card-text">酸味と甘味の絶妙なバランス</p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to search_stores_path(q: { countries_cont: "インドネシア" }) do %>
+      <div class="card">
+        <img src="/assets/Indonesia.jpg" class="card-img-top" alt="インドネシア">
+        <div class="card-body">
+          <h5 class="card-title">インドネシア</h5>
+          <p class="card-text">明るい酸味と花のような甘い香り</p>
+        </div>
+      </div>
+    <% end %>
+  </section>
+
+  <div class="button_container">
+    <%= link_to '他の生産国で探す→' , search_stores_path, class: "btn btn-light"%>
   </div>
 </div>

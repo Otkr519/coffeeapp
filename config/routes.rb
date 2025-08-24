@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users, only:[:show, :edit, :update]
   get '/account' => 'users#account'
 
-    resources :stores
+resources :stores do
+  collection do
+    get 'search'
+  end
+end
 
 end

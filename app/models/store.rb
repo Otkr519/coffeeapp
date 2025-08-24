@@ -9,6 +9,10 @@ class Store < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "countries", "name", "roast_level", "prefecture_id"]
+  end
+
   validates :name, presence: true
   validates :prefecture_id, presence: true
   validates :address, presence: true

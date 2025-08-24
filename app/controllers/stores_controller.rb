@@ -42,6 +42,11 @@ class StoresController < ApplicationController
     redirect_to stores_path, notice: "店舗を削除しました"
   end
 
+  def search
+    @q = Store.ransack(params[:q])
+    @stores = @q.result
+  end
+
   private
 
   def store_params
