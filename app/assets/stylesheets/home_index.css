@@ -63,6 +63,125 @@
   padding: 10px;
 }
 
+.search_box {
+  width: 70%;
+  height: 60px;
+  border-radius: 24px;
+  text-align: center;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+.search_button{
+  width: 75px;
+  height: 60px;
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.search_button:hover{
+  background-color: #f3e4d8;
+}
+
+.search_container{
+  background-color: #adadad3d;
+}
+
+.country_search_text_container{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.country_search_view_text h2{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.country_search_view_text h3{
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.country_search_view_text h3::after{
+  content:'';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background-color: #000000;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search_image_container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: space-around;
+}
+
+.search_image_container a {
+  text-decoration: none;
+}
+
+.search_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+
+.btn-light {
+  width: 50%;
+  margin: 15px;
+  color: black;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card {
+  cursor: pointer;
+  max-width: 500px;
+  width: 100%;
+  width: 18rem;
+  margin: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.button_container {
+  text-align: center;
+}
 
 
 @media (max-width: 992px) {
@@ -87,6 +206,7 @@
   .search_form{
     display: block;
   }
+
   .search_box {
     margin: 10px;
     width: 70%;
@@ -95,5 +215,13 @@
   .btn-success {
     margin: 10px;
     width: 70%;
+  }
+
+  .btn-light{
+    font-size: 14px;
+    padding: 15px;
+    white-space: nowrap;
+    width: 70%;
+    margin: auto;
   }
 }
