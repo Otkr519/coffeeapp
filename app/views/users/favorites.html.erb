@@ -1,0 +1,34 @@
+<div class='store_head_string'>
+  <%= @user.name %>のお気に入り店舗
+</div>
+
+<div class='store_list'>
+  <% @favorite_stores.each do |store|  %>
+    <%= link_to store_path(store), class: 'store_item' do %>
+      <% if store.image? %>
+        <%= image_tag store.image.url, size: '100x100', class: 'rounded' %>
+      <% else %>
+        <%= image_tag "/assets/default.jpg", size: '100x100', class: 'rounded' %>
+      <% end %>
+      <div class='store_info'>
+        <h3><%= store.name %></h3>
+        <p>住所: <%= store.address %></p>
+        <p>生産国: <%= store.countries %></p>
+        <p>
+          焙煎度:
+          <% store.roast_level.times do %>
+            <span class="coffeebeans_icon"></span>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @favorite_stores.empty? %>
+  <p>まだお気に入りの店舗がありません。</p>
+<% end %>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+  <%= link_to '新たなお気に入り店舗を探しに→' , '/stores/search', class: "btn btn-outline-success"%>
+</div>
