@@ -34,6 +34,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <li><%= link_to 'マイページ', user_path(current_user), class: "dropdown-item" %></li>
               <li><%= link_to 'アカウント設定', account_path, class: "dropdown-item" %></li>
+              <li><%= link_to 'お気に入り一覧', favorites_user_path(current_user) ,class: "dropdown-item"%></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
