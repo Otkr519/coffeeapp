@@ -32,6 +32,10 @@ class UsersController < ApplicationController
       sign_in user
     end
 
+  def favorites
+    @user = current_user
+    @favorite_stores = @user.liked_stores
+  end
 
     private
   def user_params

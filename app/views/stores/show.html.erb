@@ -10,6 +10,15 @@
     <%= image_tag "/assets/default.jpg", :size => '400x400', class: 'store_images' %>
   <% end %>
 
+  <div class="store_favorite_container">
+    <% if @store.liked_users.include?(current_user) %>
+      <%= button_to '＊お気に入り＊', store_like_path(@store), method: :delete, class: "btn btn-success btn-sm" %>
+    <% else %>
+      <%= button_to 'お気に入りする', store_like_path(@store), class: "btn btn-outline-success btn-sm" %>
+    <% end %>
+    <p>お気に入り <span class="store_favorite_font"><%= @store.likes.count %></span>件</p>
+  </div>
+
   <ul class="list-group list-group-flush">
     <p class= "store_show_list_font">店舗名</p>
     <li class="list-group-item"><%= @store.name%></li>

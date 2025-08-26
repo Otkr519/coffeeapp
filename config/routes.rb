@@ -4,13 +4,20 @@ Rails.application.routes.draw do
 
   devise_for :users
   post 'guest_sign_in', to: 'users#guest_user'
-  resources :users, only:[:show, :edit, :update]
+
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :favorites
+    end
+  end
+
   get '/account' => 'users#account'
 
-resources :stores do
-  collection do
-    get 'search'
+  resources :stores do
+    collection do
+      get 'search'
+    end
+    resource :like, only: [:create, :destroy]
   end
-end
 
 end
