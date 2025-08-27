@@ -21,11 +21,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_21_055100) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "store_id"
-    t.text "content"
+    t.integer "rating"
+    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "store_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_reviews_on_store_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -58,4 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_21_055100) do
 
   add_foreign_key "likes", "stores"
   add_foreign_key "likes", "users"
+  add_foreign_key "reviews", "stores"
+  add_foreign_key "reviews", "users"
 end
