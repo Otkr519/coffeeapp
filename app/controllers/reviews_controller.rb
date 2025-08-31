@@ -15,6 +15,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = @store.reviews.find(params[:id])
+  end
+
   private
   def set_store
     @store = Store.find(params[:store_id])
