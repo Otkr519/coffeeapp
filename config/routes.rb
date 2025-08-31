@@ -18,6 +18,6 @@ Rails.application.routes.draw do
       get 'search'
     end
     resource :like, only: [:create, :destroy]
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
-
 end
