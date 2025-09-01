@@ -28,6 +28,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = @store.reviews.find(params[:id])
+    @review.destroy
+    redirect_to @store, notice: 'レビューを削除しました。'
+  end
+
+
   private
   def set_store
     @store = Store.find(params[:store_id])
