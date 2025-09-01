@@ -72,6 +72,22 @@
 .btn-sm{
   margin-top: 10px;
 }
+.text-muted{
+  font-size: 13px;
+}
+
+.p-4{
+  max-width: 1000px;
+  width: 100%;
+}
+
+.mb-4{
+  margin-top: 20px;
+}
+
+.justify-content-center{
+  margin: 30px;
+}
 
 @media (max-width: 992px) {
   .store_show_container {
