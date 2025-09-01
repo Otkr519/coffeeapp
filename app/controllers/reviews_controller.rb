@@ -19,6 +19,15 @@ class ReviewsController < ApplicationController
     @review = @store.reviews.find(params[:id])
   end
 
+  def update
+    @review = @store.reviews.find(params[:id])
+    if @review.update(review_params)
+      redirect_to @store, notice: 'レビューを更新しました。'
+    else
+      render 'edit'
+    end
+  end
+
   private
   def set_store
     @store = Store.find(params[:store_id])
