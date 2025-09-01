@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = @store.reviews.find(params[:id])
+    not_match_user
   end
 
   def update
@@ -35,13 +36,19 @@ class ReviewsController < ApplicationController
   end
 
 
-  private
+private
   def set_store
     @store = Store.find(params[:store_id])
   end
 
   def review_params
     params.require(:review).permit(:comment, :rating)
+  end
+
+  def not_match_user
+    unless @review.user == current_user
+      redirect_to @store, alert: '権限がありません。'
+    end
   end
 
 end
