@@ -37,6 +37,12 @@ class UsersController < ApplicationController
     @favorite_stores = @user.liked_stores
   end
 
+  def reviews
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.includes(:store).order(created_at: :desc)
+  end
+
+
     private
   def user_params
     params.require(:user).permit(:name, :email, :introduce, :image, :favorite, :productionarea, :password, :password_confirmation)
