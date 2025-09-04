@@ -12,6 +12,9 @@ class Store < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["address", "countries", "name", "roast_level", "prefecture_id"]
   end
+  def average_rating
+    reviews.average(:rating)&.round(1) || 0
+  end
 
   validates :name, presence: true
   validates :prefecture_id, presence: true

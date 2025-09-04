@@ -33,9 +33,15 @@ class UsersController < ApplicationController
     end
 
   def favorites
-    @user = current_user
+    @user = User.find(params[:id])
     @favorite_stores = @user.liked_stores
   end
+
+  def reviews
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.includes(:store).order(created_at: :desc)
+  end
+
 
     private
   def user_params

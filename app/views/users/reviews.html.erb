@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "user_reviews.css", media: "all" %>
+<h2 class="text-center mb-4"><%= @user.name %> さんのレビュー一覧</h2>
+
+<div class="review-list">
+  <% @reviews.each do |review| %>
+    <div class="card review-card shadow-sm">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="mb-0">
+            <%= link_to review.store.name, store_path(review.store), class: "store-link" %>
+            <span class="text-muted prefecture-name mb-2"><%= review.store.prefecture.name %></span>
+          </h5>
+          <div class="text-warning">
+            <% review.rating.times do %>
+              ★
+            <% end %>
+            <% (5 - review.rating).times do %>
+              ☆
+            <% end %>
+          </div>
+        </div>
+
+        <p class="text-muted review-time mb-2">
+          投稿日: <%= review.created_at.strftime("%Y/%m/%d") %>
+        </p>
+
+        <p class="card-text"><%= review.comment %></p>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+<% if @reviews.empty? %>
+  <p class="text-center text-muted">まだレビューがありません。</p>
+<% end %>
+
+<div class="text-center mt-4">
+  <%= link_to '店舗一覧', stores_path, class: "btn btn-success" %>
+</div>

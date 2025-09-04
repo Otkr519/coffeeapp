@@ -41,3 +41,67 @@
       <%= link_to '店舗を削除', store_path(@store), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
     </div>
   <% end %>
+
+<h2 class="text-center mb-4">レビュー</h2>
+
+<div class="d-flex justify-content-center">
+  <div class="card shadow-sm p-4">
+    <% avg = @store.average_rating.round if @store.average_rating.present? %>
+    <div class="text-center mb-4">
+      <% if avg.present? %>
+        <p class="mb-1">平均評価</p>
+        <div class="fs-4">
+          <% avg.times do %>
+            <span class="text-warning">★</span>
+          <% end %>
+          <% (5 - avg).times do %>
+            <span class="text-secondary">☆</span>
+          <% end %>
+          <span class="ms-2">(<%= @store.average_rating.round(1) %>)</span>
+        </div>
+      <% else %>
+        <p class="text-muted">まだ評価はありません</p>
+      <% end %>
+    </div>
+
+    <% if @store.reviews.any? %>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <% @store.reviews.each do |review| %>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><strong><%= link_to review.user.name, user_path(review.user), class: "user-link" %></strong> さん</h5>
+                <p class="text-muted">投稿日: <%= review.created_at.strftime("%Y/%m/%d") %></p>
+                <div class="text-warning mb-2">
+                  <% review.rating.times do %>
+                    ★
+                  <% end %>
+                  <% (5 - review.rating).times do %>
+                    ☆
+                  <% end %>
+                </div>
+                <p class="card-text"><%= review.comment %></p>
+              </div>
+              <% if current_user && current_user == review.user %>
+                <div class="card-footer d-flex gap-2">
+                  <%= link_to '編集', edit_store_review_path(@store, review), class: "btn btn-sm btn-outline-success " %>
+                  <%= link_to '削除', store_review_path(@store, review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-center">まだレビューがありません。</p>
+    <% end %>
+
+    <div class="text-center mt-4">
+      <% if user_signed_in? %>
+        <%= link_to 'レビューを投稿する', new_store_review_path(@store), class: "btn btn-success" %>
+      <% else %>
+        <p>レビューを投稿するには <%= link_to 'ログイン', new_user_session_path %> してください。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

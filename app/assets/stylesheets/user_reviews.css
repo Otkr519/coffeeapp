@@ -1,0 +1,36 @@
+.mb-4 {
+  font-family: "Yuji Mai", serif;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.review-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.store-link {
+  color: #212529;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.store-link:hover {
+  color: #198754;
+  text-decoration: underline;
+}
+
+.prefecture-name{
+  font-size: 10px;
+}
+
+.review-time{
+  font-size: 13px;
+}
