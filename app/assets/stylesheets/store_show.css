@@ -89,6 +89,16 @@
   margin: 30px;
 }
 
+.user-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-link:hover {
+  text-decoration: none;
+  color: #6c757d
+}
+
 @media (max-width: 992px) {
   .store_show_container {
     flex-direction: column;
