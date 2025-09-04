@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
 
   def favorites
-    @user = current_user
+    @user = User.find(params[:id])
     @favorite_stores = @user.liked_stores
   end
 
