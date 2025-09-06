@@ -30,6 +30,7 @@ class UsersController < ApplicationController
         user.name = "ゲストユーザー"
       end
       sign_in user
+      redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"
     end
 
   def favorites
