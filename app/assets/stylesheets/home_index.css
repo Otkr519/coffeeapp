@@ -138,7 +138,7 @@
 }
 
 
-.btn-light {
+.btn-search {
   width: 50%;
   margin: 15px;
   color: black;
@@ -217,7 +217,7 @@
     width: 70%;
   }
 
-  .btn-light{
+  .btn-search{
     font-size: 14px;
     padding: 15px;
     white-space: nowrap;

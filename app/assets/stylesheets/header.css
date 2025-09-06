@@ -56,7 +56,7 @@ margin-top: 20px;
     top: auto;
   }
 
-  .nav-notlogin-btn .btn-light, .nav-notlogin-btn .btn-secondary{
+  .btn-login, .btn-register{
     display: block;
     margin: 10px 10px;
   }
