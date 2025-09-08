@@ -7,6 +7,8 @@ class CreateStores < ActiveRecord::Migration[7.0]
       t.integer :roast_level
       t.string :image
       t.integer :prefecture_id
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

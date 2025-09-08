@@ -11,6 +11,7 @@
     <%= image_tag "/assets/default.jpg", :size => '400x400', class: 'store_images' %>
   <% end %>
 
+  <div id="map"></div>
   <div class="store_favorite_container">
     <% if @store.liked_users.include?(current_user) %>
       <%= button_to '＊お気に入り＊', store_like_path(@store), method: :delete, class: "btn btn-success btn-sm" %>
@@ -106,3 +107,30 @@
     </div>
   </div>
 </div>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&libraries=maps,marker&callback=initMap">
+</script>
+
+<script>
+  function initMap() {
+    var storeLocation = { lat: <%= @store.latitude %>, lng: <%= @store.longitude %> };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: storeLocation
+    });
+
+    const marker = new google.maps.Marker({
+      position: storeLocation,
+      map: map
+    });
+    const infoWindow = new google.maps.InfoWindow({
+      content: "<%= @store.name %>"
+    });
+
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+  }
+</script>

@@ -10,13 +10,14 @@
 
 .store_show_container{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 25px;
   padding: 30px;
   margin-left: 30px;
   margin-right: 30px;
   border: 5px solid #aaaaaa;
   position: relative;
+  flex-direction: column;
 }
 
 .store_images{
@@ -99,6 +100,12 @@
   color: #6c757d
 }
 
+#map{
+  height: 400px;
+  width: 80%;
+  margin: 20px 0;
+}
+
 @media (max-width: 992px) {
   .store_show_container {
     flex-direction: column;
@@ -113,5 +120,4 @@
     position: static;
     text-align: center;
   }
-
 }

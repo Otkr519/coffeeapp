@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_21_055100) do
     t.integer "roast_level"
     t.string "image"
     t.integer "prefecture_id"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
