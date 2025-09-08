@@ -68,3 +68,63 @@
     <%= link_to '他の生産国で探す→' , search_stores_path, class: "btn btn-light btn-search"%>
   </div>
 </div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap"></script>
+
+<div class="search_container">
+  <div class="country_search_text_container">
+    <div class="country_search_view_text">
+      <h2>Search by map</h2>
+        <h3>地図から探す </h3>
+    </div>
+  </div>
+  <div class="map_container">
+    <div id="map" ></div>
+    <div class="map_select_details">
+      <h3>選択店舗</h3>
+      <div id="store_info"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 36.2048, lng: 138.2529},
+      zoom: 4
+    });
+
+    var stores = <%= raw @stores.to_json(only: [:latitude, :longitude, :name, :id, :address, :countries, :image]) %>;
+    var storeInfo = document.getElementById('store_info');
+
+    stores.forEach(function(store) {
+      if (!store.latitude || !store.longitude) return;
+
+      var marker = new google.maps.Marker({
+        position: {lat: store.latitude, lng: store.longitude},
+        map: map,
+        title: store.name
+      });
+
+      marker.addListener('click', function() {
+        var imageUrl = store.image && store.image.url ? store.image.url : '/assets/default.jpg';
+        var storeDetailContent = `
+          <a href="/stores/${store.id}" class="store_link">
+            <div class="store_item">
+              <img src="${imageUrl}" class="store_image" alt="${store.name}">
+              <div class="store_info">
+                <h3>${store.name}</h3>
+                <p>住所: ${store.address}</p>
+                <p>生産国: ${store.countries}</p>
+              </div>
+            </div>
+          </a>
+        `;
+        storeInfo.innerHTML = storeDetailContent;
+
+        map.setCenter({lat: store.latitude, lng: store.longitude});
+        map.setZoom(15);
+      });
+    });
+  }
+</script>
