@@ -1,7 +1,6 @@
 class Store < ApplicationRecord
-  has_many :users, through: :reviews
-
   has_many :reviews, dependent: :destroy
+  has_many :users, through: :reviews
 
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
