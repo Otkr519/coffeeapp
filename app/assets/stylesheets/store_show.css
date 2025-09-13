@@ -71,6 +71,7 @@
 .btn-sm{
   margin-top: 10px;
 }
+
 .text-muted{
   font-size: 13px;
 }
@@ -117,5 +118,9 @@
   .store_favorite_container{
     position: static;
     text-align: center;
+  }
+
+  .btn-danger ,.btn-store-edit{
+    margin: 10px 30px 0 30px;
   }
 }
