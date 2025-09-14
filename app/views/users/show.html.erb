@@ -57,10 +57,12 @@
       </div>
     </div>
   </li>
+
   <% if current_user == @user %>
     <%= link_to "プロフィール編集 →", [:edit, @user], class: "account_mypage_links" %>
     <%= link_to "ユーザーページ →", account_path, class: "account_mypage_links" %>
   <% end %>
+
   <%= link_to "#{@user.name}さんのお気に入り一覧", favorites_user_path(@user) ,class: "account_mypage_links"%>
   <%= link_to "#{@user.name}さんのレビュー一覧", reviews_user_path(@user), class: "account_mypage_links" %>
 </ul>

@@ -7,9 +7,9 @@
 
 <div class="form-area">
 
-    <% if current_user.email == 'guest@example.com' %>
-      <p class="text-danger">ゲストユーザーはユーザー設定を変更できません。</p>
-    <% end %>
+  <% if current_user.email == 'guest@example.com' %>
+    <p class="text-danger">ゲストユーザーはユーザー設定を変更できません。</p>
+  <% end %>
 
   <%= form_with model: @user do |f| %>
 
@@ -32,7 +32,7 @@
       <input type="checkbox" class="form-check-input" id="show_passwords" onchange="
         document.getElementById('new_pass').type = this.checked ? 'text' : 'password';
         document.getElementById('password_confirmation').type = this.checked ? 'text' : 'password';">
-        <label class="form-check-label" for="show_passwords">パスワードを表示</label>
+      <label class="form-check-label" for="show_passwords">パスワードを表示</label>
     </div>
 
     <div class="d-grid gap-2">

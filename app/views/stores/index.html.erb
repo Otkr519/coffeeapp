@@ -16,28 +16,27 @@
     </div>
   <% end %>
 
-  <div class='store_list'>
+<div class='store_list'>
 
-    <% @stores.each do |store| %>
-      <%= link_to store_path(store), class: 'store_item' do %>
-        <% if store.image? %>
-          <%= image_tag store.image.url, size: '100x100', class: 'rounded' %>
-        <% else %>
-          <%= image_tag "/assets/default.jpg", size: '100x100', class: 'rounded' %>
-        <% end %>
-
-        <div class='store_info'>
-          <h3><%= store.name %></h3>
-          <p>住所: <%= store.address %></p>
-          <p>生産国: <%= store.countries %></p>
-          <p>
-            焙煎度:
-            <% store.roast_level.times do %>
-              <span class="coffeebeans_icon"></span>
-            <% end %>
-          </p>
-        </div>
+  <% @stores.each do |store| %>
+    <%= link_to store_path(store), class: 'store_item' do %>
+      <% if store.image? %>
+        <%= image_tag store.image.url, size: '100x100', class: 'rounded' %>
+      <% else %>
+        <%= image_tag "/assets/default.jpg", size: '100x100', class: 'rounded' %>
       <% end %>
-    <% end %>
-  </div>
 
+      <div class='store_info'>
+        <h3><%= store.name %></h3>
+        <p>住所: <%= store.address %></p>
+        <p>生産国: <%= store.countries %></p>
+        <p>
+          焙煎度:
+          <% store.roast_level.times do %>
+            <span class="coffeebeans_icon"></span>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
