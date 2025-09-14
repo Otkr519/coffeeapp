@@ -1,5 +1,6 @@
 <% content_for :title, "#{@store.name} の詳細 - こそこそ珈琲研究室" %>
 <%= stylesheet_link_tag "store_show", media: "all" %>
+
 <div class= 'store_show_head_string'>
   店舗情報
 </div>
@@ -12,6 +13,7 @@
   <% end %>
 
   <div id="map"></div>
+
   <div class="store_favorite_container">
     <% if @store.liked_users.include?(current_user) %>
       <%= button_to '＊お気に入り＊', store_like_path(@store), method: :delete, class: "btn btn-success btn-sm" %>
@@ -24,10 +26,13 @@
   <ul class="list-group list-group-flush">
     <p class= "store_show_list_font">店舗名</p>
     <li class="list-group-item"><%= @store.name%></li>
+
     <p class= "store_show_list_font">住所</p>
     <li class="list-group-item"><%= @store.address%></li>
+
     <p class= "store_show_list_font">生産国</p>
     <li class="list-group-item"><%= @store.countries%></li>
+
     <p class= "store_show_list_font">焙煎度</p>
     <li class= "list-group-item">
       <% @store.roast_level.times do %>
