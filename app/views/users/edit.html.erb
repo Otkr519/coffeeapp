@@ -16,17 +16,20 @@
     <% end %>
 
     <div class="text-center">
-      <% if @user.image? %>
-        <%= image_tag @user.image.small_thumb.url, :size => '100x100', class: 'rounded' %>
-      <% else %>
-        <%= image_tag "/assets/default.jpg", :size => '100x100', class: 'rounded' %>
-      <% end %>
+      <%= image_tag(@user.image? ? @user.image.url : "/assets/default.jpg", id: "image_preview", class: "rounded") %>
     </div>
 
     <div class="form-group">
-      <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "form-control", disabled: (current_user.email == 'guest@example.com') %>
+      <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "form-control", id: "image_input", disabled: (current_user.email == 'guest@example.com')  %>
       <% if current_user.email == 'guest@example.com' %>
         <p class="text-danger">ゲストユーザーは画像を変更できません。</p>
+      <% end %>
+    </div>
+
+    <div class="text-center">
+      <% if @user.image? %>
+        <%= f.check_box :remove_image %>
+        <%= f.label :remove_image, "画像を削除する" %>
       <% end %>
     </div>
 
