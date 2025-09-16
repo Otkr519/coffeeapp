@@ -55,6 +55,11 @@
   font-size: 12px;
 }
 
+.rounded {
+  margin-bottom: 10px;
+  max-width: 200px;
+}
+
 @media (max-width: 768px) {
   .countries_note {
     font-size: 11px;
