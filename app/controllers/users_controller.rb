@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
     private
   def user_params
-    params.require(:user).permit(:name, :email, :introduce, :image, :favorite, :productionarea, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :introduce, :image, :favorite, :productionarea, :password, :password_confirmation, :remove_image )
   end
 
   def not_match_user
