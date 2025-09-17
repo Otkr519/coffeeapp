@@ -22,6 +22,10 @@ RSpec.describe User, type: :model do
     it "userモデルがlikeモデルを経由して、storeモデルと関連付けされている" do
       should have_many(:liked_stores).through(:likes).source(:store)
     end
+
+    it "reviewモデルと関連付けされている" do
+      should have_many(:reviews)
+    end
   end
 
   describe "Deviseのテスト" do
@@ -49,4 +53,22 @@ RSpec.describe User, type: :model do
       expect(user.image).to be_present
     end
   end
+  describe '画像削除機能' do
+    it 'remove_image が true のとき画像が削除される' do
+      expect(user.image?).to be_truthy
+      user.remove_image = '1'
+      user.save!
+      user.reload
+      expect(user.image?).to be_falsey
+    end
+
+    it 'remove_image が nil のとき画像は削除されない' do
+      expect(user.image?).to be_truthy
+      user.remove_image = nil
+      user.save!
+      user.reload
+      expect(user.image?).to be_truthy
+    end
+  end
+
 end

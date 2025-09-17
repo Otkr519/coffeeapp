@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Store, type: :model do
+  let(:store) { create(:store) }
+
   describe "バリデーションのテスト" do
-    let(:store) { create(:store) }
 
     it "有効なStoreを作成できる" do
       expect(store).to be_valid
@@ -58,6 +59,31 @@ RSpec.describe Store, type: :model do
   describe ".ransackable_attributes" do
     it "正しい検索可能な属性を返す" do
       expect(Store.ransackable_attributes).to eq(["address", "countries", "name", "roast_level", "prefecture_id"])
+    end
+  end
+
+  describe "画像アップロードのテスト" do
+    it "画像がアップロードされること" do
+      store.image = Rack::Test::UploadedFile.new(File.join(Rails.root, 'test/fixtures/files/test.jpg'), 'image/jpeg')
+      expect(store.image).to be_present
+    end
+  end
+
+  describe '画像削除機能' do
+    it 'remove_image が true のとき画像が削除される' do
+      expect(store.image?).to be_truthy
+      store.remove_image = '1'
+      store.save!
+      store.reload
+      expect(store.image?).to be_falsey
+    end
+
+    it 'remove_image が nil のとき画像は削除されない' do
+      expect(store.image?).to be_truthy
+      store.remove_image = nil
+      store.save!
+      store.reload
+      expect(store.image?).to be_truthy
     end
   end
 end
