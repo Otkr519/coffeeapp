@@ -130,6 +130,8 @@
       position: storeLocation,
       map: map
     });
+    window.markers = [marker];
+
     const infoWindow = new google.maps.InfoWindow({
       content: "<%= @store.name %>"
     });
