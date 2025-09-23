@@ -84,3 +84,4 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem "aws-sdk-s3"
