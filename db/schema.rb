@@ -40,8 +40,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_21_055100) do
     t.integer "prefecture_id"
     t.float "latitude"
     t.float "longitude"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,4 +67,5 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_21_055100) do
   add_foreign_key "likes", "users"
   add_foreign_key "reviews", "stores"
   add_foreign_key "reviews", "users"
+  add_foreign_key "stores", "users"
 end
