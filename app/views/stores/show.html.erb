@@ -40,12 +40,16 @@
       <% end %>
     </li>
   </ul>
+  <p>登録者: <%= link_to @store.user.name, user_path(@store.user), class: "user-link" %> </p>
+  <p>最終更新: <%= @store.updated_at.strftime("%Y-%m-%d") %> </p>
 </div>
 
   <% if user_signed_in? %>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <%= link_to "店舗情報編集 →", [:edit, @store], class: "btn btn-light btn-store-edit" %>
-      <%= link_to '店舗を削除', store_path(@store), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        <%= link_to "店舗情報編集 →", [:edit, @store], class: "btn btn-light btn-store-edit" %>
+      <% if current_user && current_user == @store.user %>
+        <%= link_to '店舗を削除', store_path(@store), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+      <% end %>
     </div>
   <% end %>
 
