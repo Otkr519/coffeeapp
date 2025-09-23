@@ -21,45 +21,59 @@
 
   <%= form_with model: @store do |f| %>
 
-    <div class="text-center">
-      <%= image_tag(@store.image? ? @store.image.url : "/assets/default.jpg", id: "image_preview", class: "rounded") %>
-    </div>
+    <% if @store.user == current_user %>
+      <div class="text-center">
+        <%= image_tag(@store.image? ? @store.image.url : "/assets/default.jpg", id: "image_preview", class: "rounded") %>
+      </div>
 
-    <div class="form-group">
-      <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "form-control", id: "image_input" %>
-    </div>
+      <div class="form-group">
+        <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "form-control", id: "image_input" %>
+      </div>
 
-    <div class="text-center">
-      <% if @store.image? %>
-        <%= f.check_box :remove_image %>
-        <%= f.label :remove_image, "画像を削除する" %>
-      <% end %>
-    </div>
+      <div class="text-center">
+        <% if @store.image? %>
+          <%= f.check_box :remove_image %>
+          <%= f.label :remove_image, "画像を削除する" %>
+        <% end %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :店舗名 , class:"required" %>
-      <%= f.text_field :name, class:'form-control', placeholder:"店舗名を入力してください。"  %>
-    </div>
+      <div class="form-group">
+        <%= f.label :店舗名 , class:"required" %>
+        <%= f.text_field :name, class:'form-control', placeholder:"店舗名を入力してください。"  %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :都道府県 , class:"required" %>
-      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: '都道府県を選択してください' }, { class: 'form-control' } %>
-    </div>
+      <div class="form-group">
+        <%= f.label :都道府県 , class:"required" %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: '都道府県を選択してください' }, { class: 'form-control' } %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :住所 , class:"required" %>
-      <%= f.text_field :address, class:'form-control', placeholder:"住所を入力してください。"   %>
-    </div>
+      <div class="form-group">
+        <%= f.label :住所 , class:"required" %>
+        <%= f.text_field :address, class:'form-control', placeholder:"住所を入力してください。"   %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :生産国 , class:"required" %><p class="countries_note" >※複数の国はスペース区切りで入力してください。</p>
-      <%= f.text_field :countries, class:'form-control', placeholder:"生産国を入力してください。例:エチオピア コロンビア" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :生産国 , class:"required" %><p class="countries_note" >※複数の国はスペース区切りで入力してください。</p>
+        <%= f.text_field :countries, class:'form-control', placeholder:"生産国を入力してください。例:エチオピア コロンビア" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :焙煎度 , class:"required" %>
-      <%= f.select :roast_level, [["1 浅煎り", 1],["2 中浅煎り", 2],["3 中煎り", 3], ["4 中深煎り", 4], ["5 深煎り", 5]],{ prompt: "焙煎度を選択してください。" , selected: @store.roast_level},{class: 'form-control'}%>
-    </div>
+      <div class="form-group">
+        <%= f.label :焙煎度 , class:"required" %>
+        <%= f.select :roast_level, [["1 浅煎り", 1],["2 中浅煎り", 2],["3 中煎り", 3], ["4 中深煎り", 4], ["5 深煎り", 5]],{ prompt: "焙煎度を選択してください。" , selected: @store.roast_level},{class: 'form-control'}%>
+      </div>
+
+    <% else %>
+
+      <div class="form-group">
+        <%= f.label :生産国 , class:"required" %><p class="countries_note" >※複数の国はスペース区切りで入力してください。</p>
+        <%= f.text_field :countries, class:'form-control', placeholder:"生産国を入力してください。例:エチオピア コロンビア" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :焙煎度 , class:"required" %>
+        <%= f.select :roast_level, [["1 浅煎り", 1],["2 中浅煎り", 2],["3 中煎り", 3], ["4 中深煎り", 4], ["5 深煎り", 5]],{ prompt: "焙煎度を選択してください。" , selected: @store.roast_level},{class: 'form-control'}%>
+      </div>
+    <% end %>
 
     <div class="d-grid gap-2">
       <%= f.submit "登録" , class:"btn btn-success" %>
