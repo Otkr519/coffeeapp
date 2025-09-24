@@ -28,7 +28,7 @@
     <li class="list-group-item"><%= @store.name%></li>
 
     <p class= "store_show_list_font">住所</p>
-    <li class="list-group-item"><%= @store.address%></li>
+    <li class="list-group-item"><%= [@store.prefecture.name, @store.address].join(" ") %></li>
 
     <p class= "store_show_list_font">生産国</p>
     <li class="list-group-item"><%= @store.countries%></li>
