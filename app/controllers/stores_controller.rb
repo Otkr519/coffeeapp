@@ -16,6 +16,7 @@ class StoresController < ApplicationController
 
   def create
     @store = Store.new(store_params)
+    @store.user = current_user
     if @store.save
       redirect_to @store
     else
@@ -27,14 +28,23 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
   end
 
-  def update
-    @store = Store.find(params[:id])
+def update
+  @store = Store.find(params[:id])
+
+  if @store.user == current_user
     if @store.update(store_params)
-      redirect_to @store
+      redirect_to @store, notice: "店舗情報を更新しました"
     else
-      render 'edit'
+      render :edit
+    end
+  else
+    if @store.update(store_params_for_others)
+      redirect_to @store, notice: "焙煎度・生産国を更新しました"
+    else
+      render :edit
     end
   end
+end
 
   def destroy
     @store = Store.find(params[:id])
@@ -51,6 +61,10 @@ class StoresController < ApplicationController
 
   def store_params
     params.require(:store).permit(:name, :address, :countries, :roast_level, :image, :prefecture_id, :remove_image)
+  end
+
+  def store_params_for_others
+    params.require(:store).permit(:countries, :roast_level)
   end
 
 end

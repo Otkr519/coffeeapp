@@ -75,6 +75,10 @@ group :test do
 
 end
 
+group :production do
+  gem "pg"
+end
+
 gem 'concurrent-ruby', '1.3.4'
 gem 'devise'
 gem 'active_hash'
@@ -84,3 +88,4 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem "aws-sdk-s3"

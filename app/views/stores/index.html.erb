@@ -8,6 +8,7 @@
   <% if user_signed_in? %>
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
       <%= link_to "新規店舗登録", new_store_path, class: "btn btn-outline-success" %>
+      <%= link_to "お店を探す", search_stores_path, class: "btn btn-outline-success" %>
     </div>
   <% else %>
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">

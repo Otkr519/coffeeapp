@@ -54,6 +54,11 @@ RSpec.describe Store, type: :model do
       expect(association.macro).to eq(:belongs_to)
       expect(association.class_name).to eq("Prefecture")
     end
+
+    it "userモデルと関連付けされている" do
+      should belong_to(:user)
+    end
+
   end
 
   describe ".ransackable_attributes" do
