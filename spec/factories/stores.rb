@@ -8,5 +8,7 @@ FactoryBot.define do
     prefecture_id { Prefecture.all.sample.id }
     roast_level { "1" }
     image { Rack::Test::UploadedFile.new(Rails.root.join('test/fixtures/files/test.jpg'), 'image/jpeg') }
+
+    association :user
   end
 end
