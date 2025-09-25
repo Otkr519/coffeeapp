@@ -38,6 +38,8 @@
               <li><%= link_to "レビュー一覧", reviews_user_path(current_user), class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "退会する", user_registration_path, method: :delete,data: { confirm: "本当に退会しますか？この操作は取り消せません。" }, class: "dropdown-item" %></li>
             </ul>
           </li>
         <% else %>
