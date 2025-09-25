@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews, dependent: :destroy
-  has_many :stores, through: :reviews
+  has_many :stores, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :liked_stores, through: :likes, source: :store
