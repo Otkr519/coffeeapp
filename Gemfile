@@ -89,3 +89,4 @@ gem 'ransack'
 gem 'geocoder'
 gem 'dotenv-rails'
 gem "aws-sdk-s3"
+gem 'carrierwave-aws'
